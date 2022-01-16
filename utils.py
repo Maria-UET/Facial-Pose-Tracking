@@ -18,9 +18,10 @@ def _calc_eucl_dist(point1, point2):
 
 
 def get_roi(raw_img, roi_cut):
-    roi = [round(roi_cut*np.shape(raw_img)[0]/2), round(roi_cut*np.shape(raw_img)[1]/2),
-            round(np.shape(raw_img)[1]-roi_cut*np.shape(raw_img)[1]),
-            round(np.shape(raw_img)[0]-roi_cut*np.shape(raw_img)[0])]
+    roi = [round(roi_cut * np.shape(raw_img)[1] / 2), round(roi_cut*np.shape(raw_img)[0]/2),
+           round(np.shape(raw_img)[1] - roi_cut * np.shape(raw_img)[1]),
+           round(np.shape(raw_img)[0]-roi_cut*np.shape(raw_img)[0])]
+
     return roi
 
 
