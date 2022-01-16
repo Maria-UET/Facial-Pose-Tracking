@@ -26,7 +26,7 @@ optional arguments:
   -m, --model 
                         path to directory containing haarcascade_frontalface_default.xml and lbfmodel.yaml  
   -i, --input
-                        path to input video or image
+                        path to input video
   -d, --detectconf
                         minimum confidence for detection
   -t, --trackconf
