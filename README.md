@@ -18,17 +18,18 @@ Make sure to keep the names consitent. Input the directory path to run the code 
 
 ## Usage
 ```
-usage: pose_tracker.py [-h] -m MODEL [-i INPUT] [-d DETECTCONF] [-t TRACKCONF]
+usage: pose_tracker.py [-h] -m MODEL [-i INPUT] [-d DETECTCONF] [-t TRACKCONF] [-s SAVE]
 
 optional arguments:
   -h, --help            show this help message and exit
-  
-  -m, --model 
-                        path to directory containing haarcascade_frontalface_default.xml and lbfmodel.yaml  
-  -i, --input
+  -m MODEL, --model MODEL
+                        path to directory containing haarcascade_frontalface_default.xml and lbfmodel.yaml
+  -i INPUT, --input INPUT
                         path to input video
-  -d, --detectconf
+  -d DETECTCONF, --detectconf DETECTCONF
                         minimum confidence for detection
-  -t, --trackconf
-                        minimum confidence for tracking```
+  -t TRACKCONF, --trackconf TRACKCONF
+                        minimum confidence for tracking
+  -s SAVE, --save SAVE  Path for saving the output file. If no path is given the file will not be saved
+  ```
 
