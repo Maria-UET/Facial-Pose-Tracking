@@ -15,7 +15,7 @@ if __name__ == '__main__':
     ap.add_argument("-m", "--model", required=True, type=str,
                     help="path to directory containing  haarcascade_frontalface_default.xml and lbfmodel.yaml")
     ap.add_argument("-i", "--input", required=False, type=str,
-                    help="path to input video or image")
+                    help="path to input video")
     ap.add_argument("-d", "--detectconf", required=False, type=float, default=0.5,
                     help="minimum confidence for detection")
     ap.add_argument("-t", "--trackconf", required=False, type=float, default=0.5,
