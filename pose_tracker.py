@@ -20,6 +20,8 @@ if __name__ == '__main__':
                     help="minimum confidence for detection")
     ap.add_argument("-t", "--trackconf", required=False, type=float, default=0.5,
                     help="minimum confidence for tracking")
+    ap.add_argument("-s", "--save", required=False, type=str,
+                    help="Path for saving the output file. If no path is given the file will not be saved")
 
     args = vars(ap.parse_args())
 
@@ -56,6 +58,11 @@ if __name__ == '__main__':
     face_mesh = mp_face_mesh.FaceMesh(min_detection_confidence=DETECT_CONF, min_tracking_confidence=TRACK_CONF)
 
     cap = cv2.VideoCapture(input_vid)
+    success, frame = cap.read()
+    img_h, img_w, img_c = frame.shape
+
+    out = cv2.VideoWriter(args['save'], cv2.VideoWriter_fourcc('M', 'J', 'P', 'G'), 10, (img_w, img_h))
+
     while cap.isOpened():
         # load the frame
         success, frame = cap.read()
@@ -103,7 +110,6 @@ if __name__ == '__main__':
             # To improve performance
             rgb_img.flags.writeable = True
 
-            img_h, img_w, img_c = raw_img.shape
             face_3d = []
             face_2d = []
 
@@ -163,9 +169,13 @@ if __name__ == '__main__':
         # draw ROI
         cv2.rectangle(raw_img, (roi[0], roi[1]), (roi[0] + roi[2], roi[1] + roi[3]), (255, 0, 0), 1)
 
+        if args['save']:
+            out.write(raw_img)
+
         # show the image
         cv2.imshow('face detection', raw_img)
         if cv2.waitKey(5) & 0xFF == 27:
             break
 
+    out.release()
     cap.release()
